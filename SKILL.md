@@ -42,7 +42,7 @@ my-site/
    - **an embedded, interactive Google map** — `<iframe>` is not allowed in WVF, so use the platform `map` section (it draws the map from `address`); a WVF section may still show the address with a "Buka di Google Maps" link;
    - **a blog post body** (`post`) — written by the platform, never by you.
 
-   Everything else is authorable: forms (`<FormFields />`, `form` type), video (`video()`), products and blog lists (the platform fills `products`/`posts` in database mode and renders pagination around your section), sliders/tabs/countdowns (a `<script is:inline>`; on the user's own site it runs without review).
+   Everything else is authorable: forms (`<FormFields />`, `form` type), video (`video()`), products and blog lists (the platform fills `products`/`posts` in database mode and renders pagination around your section), sliders/tabs/countdowns (a `<script is:inline>`; on the user's own site it runs right away and is checked in the background — keep it to the section's own interface, or it gets switched off).
 5. **Publishing is the user's call.** Publish only after they have looked at the preview link and approved the subdomain. If your token has no publish scope, tell them to press **Publikasikan** in the dashboard.
 6. **Never ask for the token in the chat.** It lives in the `WEBTO_TOKEN` environment variable (setup in `references/mcp.md`).
 

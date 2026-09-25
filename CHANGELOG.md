@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1 — 2026-09-26
+
+- **A site's own scripts are checked in the background.** They run on the user's site right away; a script that is clearly harmful is switched off (the section still renders without it) and the user is emailed. Keep scripts to the section's own interface (the variant skill's `wvf.md` §4 "Review rule"). Replaces "runs without review".
+
 ## 0.2.0 — 2026-09-25
 
 - **Every section is designed, not assembled.** The agent authors a WVF variant for every section, the navbar and footer included, following the html-to-webto-variant skill — which must now be installed alongside. Platform variants remain only where WVF cannot do the job: an embedded interactive map (`map`) and a blog post body (`post`). Forms, video, database-driven product and blog lists, sliders and countdowns are all authorable.

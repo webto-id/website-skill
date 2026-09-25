@@ -135,7 +135,7 @@ Every section you design is one file, `sections/<key>.astro`, declared once:
 
 - Reference it from any section of that `type` as `"variant": "u:@<key>"`. **One key, many sections**: the cta on Beranda and on Menu, the hero of every inner page — same file, different `content`. The site stays coherent and within the limits (12 new files per upload, 24 own variants per site).
 - The key is lowercase with hyphens and equals the file's basename. `name` is the key in English Title Case.
-- On a website these variants are private (no marketplace review; your scripts run on the user's own site). After an export, `variants[]` lists the site's own variants and `sections/` holds their files.
+- On a website these variants are private: never listed, no marketplace approval. They are checked automatically in the background after each save; a script that is clearly harmful is switched off (the section still renders without it) and the user is emailed — so keep scripts to the section's own interface (variant skill `wvf.md` §4 "Review rule"). After an export, `variants[]` lists the site's own variants and `sections/` holds their files.
 - On `update_site`, send in `variants` ONLY the entries whose file you changed or added, each with its `source`. A `u:@<key>` whose entry you leave out means "the variant this site already has under that key"; a key the site does not have is an error. A changed file under an existing key becomes a new VERSION of that variant, not a new variant.
 
 ## Check it
