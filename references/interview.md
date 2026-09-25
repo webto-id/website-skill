@@ -15,6 +15,9 @@ certifications, client names and logos, testimonials, ratings, statistics
 ("10 tahun", "500+ klien"), menu items, product specs. Unknown → ask, or leave
 the field or section out. Never a placeholder.
 
+"Goes to" names a section TYPE and its base fields (`catalog.md`) — the
+content shape. How it looks is your own WVF variant of that type.
+
 ## Group 1 — always
 
 | Ask | Goes to |
@@ -35,7 +38,7 @@ the field or section out. Never a placeholder.
 | Jam buka? | `businessProfile.openingHours` [{days: ["Mo",…], open: "08:00", close: "17:00"}]; `map.hours` as text |
 | Instagram / TikTok / Facebook / YouTube / marketplace links? | `businessProfile.socialLinks`, footer `links` |
 | Punya logo? Foto usaha / produk / tim? | `asset:<file>` (upload via `begin_asset_upload`), navbar `logoUrl`, hero `images`, gallery |
-| Gaya yang diinginkan? (hangat, modern, mewah, ceria, formal) Warna brand? | `theme` (see `site-json.md`) |
+| Gaya yang diinginkan? (hangat, modern, mewah, ceria, formal) Warna brand? Ada situs yang Anda suka tampilannya? | the visual direction (SKILL.md step 4): `theme` (see `site-json.md`) and the design language of every section you author |
 
 ## Group 3 — by kind of business
 
@@ -100,7 +103,7 @@ then follow up only on what they have.
 ### Personal (freelancer, kreator, profesional, portofolio)
 | Ask | Goes to |
 |---|---|
-| Nama, profesi, satu kalimat tentang Anda, foto diri? | hero `split-profile` variant (headline = name), `siteType: "personal"` |
+| Nama, profesi, satu kalimat tentang Anda, foto diri? | hero (headline = name, a portrait-led design), `siteType: "personal"` |
 | Karya / proyek terbaik (judul, foto, tautan)? | `gallery` |
 | Layanan yang ditawarkan dan tarif (kalau mau ditampilkan)? | `features-grid`, `pricing` |
 | Pengalaman / klien / penghargaan? | `text-block`, `logo-cloud`, `stats` — as given |
@@ -121,6 +124,7 @@ Show, in the user's language:
 
 ```
 Situs: Kopi Senja — kopi-senja.wpage.id (belum tayang)
+Tampilan: hangat dan santai — krem, cokelat bata, aksen kuning; judul serif (Fraunces); foto sedikit miring; tombol bulat
 Beranda: Hero (foto kedai) · Menu andalan (6 menu, harga dari Anda) · Kata pelanggan (2 ulasan dari Anda) · FAQ (4) · Ajakan pesan via WhatsApp
 Menu: Daftar lengkap 14 item
 Kontak: Alamat + peta + jam buka + WhatsApp

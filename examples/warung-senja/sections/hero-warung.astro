@@ -1,0 +1,39 @@
+---
+import { img, url, Container, Button, EditUrlPill } from "webto/variant";
+
+interface Props {
+  badge?: string;
+  headline?: string;
+  subheadline?: string;
+  ctaText?: string;
+  ctaUrl?: string;
+  images?: Array<{ url: string; alt?: string }>;
+}
+
+const { badge, headline, subheadline, ctaText = "Lihat Menu", ctaUrl = "/menu", images = [] } = Astro.props;
+const photo = img(images[0]?.url, 1280);
+---
+<section class="bg-secondary py-16 text-secondary-foreground sm:py-24">
+  <Container>
+    <div class="grid items-center gap-10 lg:grid-cols-[1.1fr_1fr]">
+      <div data-wv-effect="reveal-up">
+        {badge && <p data-edit-field="badge" class="inline-block rounded-full border border-secondary-foreground/30 px-3 py-1 text-xs uppercase tracking-[0.18em]">{badge}</p>}
+        <h1 class="mt-5 leading-[1.08] tracking-tight" style="font-family: var(--font-heading);">
+          <span data-edit-field="headline">{headline}</span>
+        </h1>
+        {subheadline && <p data-edit-field="subheadline" class="mt-5 max-w-xl text-lg leading-relaxed text-secondary-foreground/80">{subheadline}</p>}
+        {ctaText && (
+          <Button href={url(ctaUrl)} size="lg" class="relative mt-8 rounded-full">
+            <span data-edit-field="ctaText">{ctaText}</span>
+            <EditUrlPill field="ctaUrl" value={ctaUrl} />
+          </Button>
+        )}
+      </div>
+      {photo ? (
+        <img src={photo} alt={images[0]?.alt ?? ""} data-edit-image="images.0.url" class="aspect-[4/3] w-full rotate-1 object-cover shadow-xl" style="border-radius: var(--radius);" />
+      ) : (
+        <div data-edit-image="images.0.url" class="aspect-[4/3] w-full bg-secondary-foreground/10" style="border-radius: var(--radius);"></div>
+      )}
+    </div>
+  </Container>
+</section>

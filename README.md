@@ -1,17 +1,22 @@
 # webto-website
 
-An AI skill (Claude Code, Cursor, and other agents that read `SKILL.md`) that builds and manages a small-business **website on [webto.id](https://webto.id)** for you: it interviews you about your business, assembles a `site.json` from webto's platform section variants, creates the site as a draft over the webto MCP server, publishes it on `<subdomain>.wpage.id` when you approve, and later edits it without disturbing what you changed in the dashboard.
+An AI skill (Claude Code, Cursor, and other agents that read `SKILL.md`) that builds and manages a small-business **website on [webto.id](https://webto.id)** for you: it interviews you about your business, sets a visual direction, designs every section of the site itself as a WVF variant (the same format as webto's marketplace templates), creates the site as a draft over the webto MCP server, publishes it on `<subdomain>.wpage.id` when you approve, and later edits it without disturbing what you changed in the dashboard.
 
 It never invents facts: prices, names, addresses, opening hours, legal details, testimonials and statistics come only from you.
 
 ## Install
 
+This skill needs the **[html-to-webto-variant](https://github.com/webto-id/variant-skill)** skill beside it — that is where the section format and design rules live. Install both:
+
 ```bash
 # Claude Code (project-level)
 git clone https://github.com/webto-id/website-skill .claude/skills/webto-website
+git clone https://github.com/webto-id/variant-skill .claude/skills/html-to-webto-variant
 
-# Claude Code (global): same command into ~/.claude/skills/
+# Claude Code (global): same commands into ~/.claude/skills/
 ```
+
+Without git: download [webto-website.zip](https://docs.webto.id/downloads/webto-website.zip) and [html-to-webto-variant.zip](https://docs.webto.id/downloads/html-to-webto-variant.zip) and unzip both into your agent's skills folder.
 
 ## Connect the webto MCP server
 

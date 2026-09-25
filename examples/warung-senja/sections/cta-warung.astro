@@ -1,0 +1,26 @@
+---
+import { url, Container, EditUrlPill } from "webto/variant";
+
+interface Props {
+  heading?: string;
+  description?: string;
+  buttonText?: string;
+  buttonUrl?: string;
+}
+
+const { heading, description, buttonText = "Hubungi Kami", buttonUrl = "#" } = Astro.props;
+---
+<section class="py-16 sm:py-20">
+  <Container>
+    <div class="relative overflow-hidden bg-primary px-8 py-12 text-center text-primary-foreground sm:px-16" style="border-radius: calc(var(--radius) * 2);">
+      <h2 class="tracking-tight" style="font-family: var(--font-heading);"><span data-edit-field="heading">{heading}</span></h2>
+      {description && <p data-edit-field="description" class="mx-auto mt-4 max-w-xl text-primary-foreground/85">{description}</p>}
+      {buttonText && (
+        <a href={url(buttonUrl)} class="relative mt-8 inline-flex items-center rounded-full bg-background px-8 py-3 font-medium text-foreground transition-opacity hover:opacity-90">
+          <span data-edit-field="buttonText">{buttonText}</span>
+          <EditUrlPill field="buttonUrl" value={buttonUrl} />
+        </a>
+      )}
+    </div>
+  </Container>
+</section>

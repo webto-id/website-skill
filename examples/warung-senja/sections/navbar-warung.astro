@@ -1,0 +1,60 @@
+---
+import { img, url, EditUrlPill } from "webto/variant";
+
+interface Props {
+  siteName?: string;
+  logoUrl?: string;
+  logoUrlDark?: string;
+  showSiteNameWithLogo?: boolean;
+  ctaText?: string;
+  ctaUrl?: string;
+  pages?: Array<{ title: string; slug: string }>;
+  currentSlug?: string;
+  linkPrefix?: string;
+  colorMode?: string;
+}
+
+const {
+  siteName = "",
+  logoUrl = "",
+  logoUrlDark = "",
+  showSiteNameWithLogo = false,
+  ctaText,
+  ctaUrl = "#",
+  pages = [],
+  currentSlug = "",
+  linkPrefix = "",
+  colorMode = "light",
+} = Astro.props;
+const darkLogo = logoUrlDark || logoUrl;
+const showName = !logoUrl || showSiteNameWithLogo;
+---
+<nav class="border-b border-border bg-background">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-3 px-6 py-4">
+    <a href={url(linkPrefix + "/")} class="flex items-center gap-2 text-lg font-semibold text-foreground" style="font-family: var(--font-heading);" data-site-name>
+      {logoUrl && colorMode === "dark" && <img src={img(darkLogo, 256)} alt={siteName} data-edit-image={logoUrlDark ? "logoUrlDark" : "logoUrl"} class="h-9 w-auto object-contain" />}
+      {logoUrl && colorMode !== "dark" && (
+        <>
+          <img src={img(logoUrl, 256)} alt={siteName} data-edit-image="logoUrl" class="h-9 w-auto object-contain dark:hidden" />
+          {logoUrlDark && <img src={img(darkLogo, 256)} alt={siteName} data-edit-image="logoUrlDark" class="hidden h-9 w-auto object-contain dark:block" />}
+        </>
+      )}
+      {showName && <span data-edit-field="siteName">{siteName}</span>}
+    </a>
+    <ul class="order-last flex w-full gap-5 overflow-x-auto text-sm sm:order-none sm:w-auto sm:flex-1 sm:justify-center">
+      {pages.map((p) => (
+        <li class="shrink-0">
+          <a href={url(linkPrefix + (p.slug ? "/" + p.slug : "/"))} class:list={["border-b-2 pb-1 transition-colors", p.slug === currentSlug ? "border-accent text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"]}>
+            {p.title}
+          </a>
+        </li>
+      ))}
+    </ul>
+    {ctaText && (
+      <a href={url(ctaUrl)} class="relative ml-auto rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground sm:ml-0">
+        <span data-edit-field="ctaText">{ctaText}</span>
+        <EditUrlPill field="ctaUrl" value={ctaUrl} />
+      </a>
+    )}
+  </div>
+</nav>

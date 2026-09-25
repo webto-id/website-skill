@@ -1,0 +1,90 @@
+{
+  "siteName": "Warung Senja",
+  "language": "id",
+  "siteType": "website",
+  "aiDescription": "Warung makan rumahan di Yogyakarta: nasi campur, sayur lodeh, dan gorengan buatan sendiri; buka pagi sampai sore dan menerima pesanan nasi kotak.",
+  "businessProfile": {
+    "phone": "+6281234567890",
+    "businessType": "Restaurant",
+    "address": { "street": "Jl. Kaliurang Km 5 No. 3", "city": "Yogyakarta", "region": "DI Yogyakarta", "postalCode": "55281", "country": "ID" },
+    "openingHours": [{ "days": ["Mo", "Tu", "We", "Th", "Fr", "Sa"], "open": "07:00", "close": "16:00" }]
+  },
+  "theme": {
+    "colorMode": "light",
+    "colors": { "primary": "#B4532A", "secondary": "#2F3B2A", "background": "#FFF9F0", "foreground": "#2A2420", "accent": "#E3A23B" },
+    "fonts": { "heading": "Fraunces", "body": "Nunito Sans" },
+    "radius": 14,
+    "spacing": "normal"
+  },
+  "siteSections": [
+    { "type": "navbar", "position": "header", "variant": "u:@navbar-warung", "content": { "siteName": "Warung Senja", "ctaText": "Pesan via WhatsApp", "ctaUrl": "https://wa.me/6281234567890" } },
+    { "type": "footer", "position": "footer", "variant": "u:@footer-warung", "content": { "text": "© 2026 Warung Senja · Jl. Kaliurang Km 5, Yogyakarta", "links": [{ "label": "Instagram", "url": "https://instagram.com/warungsenja" }] } }
+  ],
+  "pages": [
+    {
+      "title": "Beranda",
+      "slug": "",
+      "seoTitle": "Warung Senja — masakan rumahan di Jl. Kaliurang, Yogyakarta",
+      "sections": [
+        {
+          "type": "hero",
+          "variant": "u:@hero-warung",
+          "content": {
+            "badge": "Buka 07.00–16.00",
+            "headline": "Masakan rumah, hangat setiap hari",
+            "subheadline": "Nasi campur, sayur lodeh, dan gorengan buatan sendiri di Jl. Kaliurang.",
+            "ctaText": "Lihat menu",
+            "ctaUrl": "/menu",
+            "images": [{ "url": "__IMG__:indonesian home cooking warung table food", "alt": "Hidangan di Warung Senja" }]
+          }
+        },
+        {
+          "type": "cta",
+          "variant": "u:@cta-warung",
+          "content": { "heading": "Pesan nasi kotak untuk acara?", "description": "Kabari jumlah porsi dan tanggalnya lewat WhatsApp.", "buttonText": "Chat WhatsApp", "buttonUrl": "https://wa.me/6281234567890" }
+        }
+      ]
+    },
+    {
+      "title": "Menu",
+      "slug": "menu",
+      "sections": [
+        {
+          "type": "products",
+          "variant": "u:@menu-warung",
+          "content": {
+            "heading": "Menu hari ini",
+            "subheading": "Harga per porsi.",
+            "products": [
+              { "title": "Nasi campur", "price": "Rp 15.000", "description": "Nasi, sayur lodeh, telur, dan sambal." },
+              { "title": "Sayur lodeh", "price": "Rp 8.000" },
+              { "title": "Tempe mendoan", "price": "Rp 2.000" }
+            ]
+          }
+        },
+        {
+          "type": "cta",
+          "variant": "u:@cta-warung",
+          "content": { "heading": "Mau diantar?", "description": "Pesan antar untuk area Jl. Kaliurang.", "buttonText": "Pesan sekarang", "buttonUrl": "https://wa.me/6281234567890" }
+        }
+      ]
+    },
+    {
+      "title": "Kontak",
+      "slug": "kontak",
+      "sections": [
+        {
+          "type": "map",
+          "content": { "heading": "Datang ke warung", "address": "Jl. Kaliurang Km 5 No. 3, Yogyakarta 55281", "phone": "+62 812-3456-7890", "hours": "Senin–Sabtu 07.00–16.00" }
+        }
+      ]
+    }
+  ],
+  "variants": [
+    { "key": "navbar-warung", "sectionType": "navbar", "name": "Navbar Warung", "description": "Single-row navbar: brand on the left, page links centred, a rounded WhatsApp button on the right.", "mood": ["warm", "casual"] },
+    { "key": "hero-warung", "sectionType": "hero", "name": "Hero Warung", "description": "Two-column hero on the secondary surface with a pill badge, large serif headline, and a slightly tilted photo.", "mood": ["warm", "casual"] },
+    { "key": "menu-warung", "sectionType": "products", "name": "Menu Warung", "description": "Menu list in two columns: item name and price joined by a dotted leader, optional thumbnail and one-line description.", "mood": ["warm", "editorial"] },
+    { "key": "cta-warung", "sectionType": "cta", "name": "Cta Warung", "description": "Rounded primary-coloured band with a centred heading, one line of text, and a light pill button.", "mood": ["warm", "bold"] },
+    { "key": "footer-warung", "sectionType": "footer", "name": "Footer Warung", "description": "Dark secondary footer: copyright line on the left, footer pages and extra links on the right.", "mood": ["warm", "minimal"] }
+  ]
+}

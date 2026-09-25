@@ -1,0 +1,27 @@
+---
+import { url, Container } from "webto/variant";
+
+interface Props {
+  text?: string;
+  links?: Array<{ label: string; url: string }>;
+  footerPages?: Array<{ title: string; slug: string }>;
+  linkPrefix?: string;
+}
+
+const { text, links = [], footerPages = [], linkPrefix = "" } = Astro.props;
+---
+<footer class="border-t border-border bg-secondary py-10 text-secondary-foreground">
+  <Container>
+    <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+      <p data-edit-field="text" class="text-sm text-secondary-foreground/80">{text}</p>
+      <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+        {footerPages.map((p) => (
+          <li><a href={url(linkPrefix + (p.slug ? "/" + p.slug : "/"))} class="hover:underline">{p.title}</a></li>
+        ))}
+        {links.map((l, i) => (
+          <li><a href={url(l.url)} data-edit-field={`links.${i}.label`} class="hover:underline">{l.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </Container>
+</footer>

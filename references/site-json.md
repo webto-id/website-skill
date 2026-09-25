@@ -7,15 +7,15 @@ export — an `id` on every page and section.
 
 ```jsonc
 {
-  "siteName": "Kopi Senja",
+  "siteName": "Warung Senja",
   "language": "id",                 // 30 languages; drives fixed UI labels ("Alamat", "Baca selengkapnya")
   "siteType": "website",            // "website" | "landing" | "personal" — exactly these
-  "aiDescription": "Kedai kopi…",   // 1-3 sentences; feeds the site's AI context (llms.txt, blog)
+  "aiDescription": "Warung makan…",   // 1-3 sentences; feeds the site's AI context (llms.txt, blog)
   "businessProfile": { … },         // strongly recommended, see below
   "theme": { … },                   // optional; omitted keys take platform defaults
   "siteSections": [ … ],            // chrome: exactly one navbar (header), optional banner, footer
   "pages": [ … ],                   // one page must have slug "" (the homepage)
-  "variants": [ … ]                 // ONLY for your own WVF sections (sections/<key>.astro)
+  "variants": [ … ]                 // one entry per sections/<key>.astro — every section you design
 }
 ```
 
@@ -72,26 +72,26 @@ on `background`, and text on `primary` must read too. On an update, OMIT
 
 ```jsonc
 "siteSections": [
-  { "type": "navbar", "position": "header", "content": { "siteName": "Kopi Senja", "ctaText": "Pesan", "ctaUrl": "https://wa.me/6281234567890" } },
-  { "type": "footer", "position": "footer", "content": { "text": "© 2026 Kopi Senja" } }
+  { "type": "navbar", "position": "header", "variant": "u:@navbar-warung", "content": { "siteName": "Warung Senja", "ctaText": "Pesan", "ctaUrl": "https://wa.me/6281234567890" } },
+  { "type": "footer", "position": "footer", "variant": "u:@footer-warung", "content": { "text": "© 2026 Warung Senja" } }
 ],
 "pages": [
   {
     "title": "Beranda",
     "slug": "",                     // "" = homepage; others are slugified ("Menu Kami" → "menu-kami")
-    "seoTitle": "Kopi Senja — kedai kopi di Braga, Bandung",
+    "seoTitle": "Warung Senja — masakan rumahan di Jl. Kaliurang, Yogyakarta",
     "seoDescription": "…",
     "showInNavbar": true,           // default true
     "showInFooter": false,          // default false
     "sections": [
-      { "type": "hero", "variant": "split", "content": { "headline": "…", "ctaText": "Lihat menu", "ctaUrl": "/menu", "images": [{ "url": "asset:kedai.jpg", "alt": "Bagian depan Kopi Senja" }] } },
-      { "type": "faq", "content": { "heading": "Pertanyaan", "items": [{ "question": "…", "answer": "…" }] } }
+      { "type": "hero", "variant": "u:@hero-warung", "content": { "headline": "…", "ctaText": "Lihat menu", "ctaUrl": "/menu", "images": [{ "url": "asset:warung.jpg", "alt": "Bagian depan Warung Senja" }] } },
+      { "type": "cta", "variant": "u:@cta-warung", "content": { "heading": "…", "buttonText": "Chat WhatsApp", "buttonUrl": "https://wa.me/6281234567890" } }
     ]
   }
 ]
 ```
 
-- `type` and `variant`: from `catalog.md`; omit `variant` for the type's first. `content` must match the type's base fields plus the variant's extra fields.
+- `type`: from `catalog.md`. `variant`: `u:@<key>` for your own section (the rule), or a platform variant name from `catalog.md` for the exceptions (`map`, `post`); omitting it gives the type's first platform variant. `content` must match the type's base fields (plus the extension fields your variant declares).
 - The navbar lists the site's pages automatically (those with `showInNavbar`) — do not restate them in `content.links`, which is for EXTRA destinations only.
 - Links between pages: `/menu`, `/kontak`; to a section on the same page: `#contact`, `#pricing` (every section gets an anchor from its type automatically).
 - Optional per section: `sectionStyles` (background/dividers), `isVisible: false` (kept but hidden). Per page: `themeOverride` — only the fields that page differs on, e.g. `{ "hideNavbar": true }` for a landing page.
@@ -121,18 +121,28 @@ In any image field (`images[].url`, `logoUrl`, `features[].image`, …):
 
 Tell the user which images are stock, so they can replace them with their own.
 
-## Your own sections (only with a user's design)
+## Your own sections: `variants[]`
 
-`variants: [{ key, sectionType, name, description, mood }]` plus
-`sections/<key>.astro`, referenced from a page as `"variant": "u:@<key>"`.
-Follow the html-to-webto-variant skill for the file. On a website these
-variants stay private (drafts, no marketplace review); editing the file and
-running `update_site` gives the variant a new version.
+Every section you design is one file, `sections/<key>.astro`, declared once:
+
+```jsonc
+"variants": [
+  { "key": "cta-warung", "sectionType": "cta", "name": "Cta Warung",
+    "description": "Rounded primary band, centred heading, one light pill button.",   // English, what it looks like
+    "mood": ["warm", "bold"] }
+]
+```
+
+- Reference it from any section of that `type` as `"variant": "u:@<key>"`. **One key, many sections**: the cta on Beranda and on Menu, the hero of every inner page — same file, different `content`. The site stays coherent and within the limits (12 new files per upload, 24 own variants per site).
+- The key is lowercase with hyphens and equals the file's basename. `name` is the key in English Title Case.
+- On a website these variants are private (no marketplace review; your scripts run on the user's own site). After an export, `variants[]` lists the site's own variants and `sections/` holds their files.
+- On `update_site`, send in `variants` ONLY the entries whose file you changed or added, each with its `source`. A `u:@<key>` whose entry you leave out means "the variant this site already has under that key"; a key the site does not have is an error. A changed file under an existing key becomes a new VERSION of that variant, not a new variant.
 
 ## Check it
 
 ```bash
-npx @webto-id/variant-check site ./my-site
+npx @webto-id/variant-check site ./my-site                          # the whole folder
+npx @webto-id/variant-check sections/cta-warung.astro --type cta   --content cta-content.json --out preview-cta.html                 # one file, rendered with real content
 ```
 
 One line per problem — manifest, every `.astro`, and every section's content,
