@@ -28,7 +28,7 @@ my-site/
 
 ## Non-negotiable rules
 
-1. **Interview before you build.** Ask in small groups (3–6 questions at a time), never a 30-question form. Start with the core questions in `interview.md`, then the ones for their kind of business.
+1. **Interview before you build.** Ask in small groups (3–6 questions at a time), never a 30-question form. Start with the core questions in `interview.md`, then the ones for their kind of business. Cover EVERY row of that business type's table before you plan: a row the user declines is fine, a row you never asked is not (a company site without the question about its directors, a clinic without its doctors' schedule, reads as unfinished to the owner).
 2. **Never invent facts.** Prices, names, addresses, phone and WhatsApp numbers, opening hours, legal details (NIB, izin, akreditasi), certifications, testimonials, client logos and statistics come ONLY from the user. If you don't know it, ask — or leave the field/section out. No "Rp 50.000" placeholders, no "Budi, Jakarta ⭐⭐⭐⭐⭐", no "500+ pelanggan puas". Marketing copy (headlines, descriptions) you may write, from what they told you.
 3. **Confirm before writing.** Show the user a summary — pages, the sections on each, the key content, the subdomain — and wait for a yes before `create_site` with `confirm: true`.
 4. **Platform variants by default.** Pick variants from `references/catalog.md`. Write WVF `.astro` files ONLY when the user brings their own design or HTML, and then follow the **html-to-webto-variant** skill for every file.
