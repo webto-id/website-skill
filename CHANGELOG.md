@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.2 — 2026-09-28
+
+- **Look at the real site before reporting.** `create_site`, `update_site` and `add_page` now return `previewUrl` (home page), `previewPages` (one signed link per page), `previewExpiresAt` and, once published, the public `url`. The agent opens every page (at least every changed one) at 390, 768 and 1280 px before telling the user it is done. A dry run against an existing site returns `savedPreview` — the site as it is now, without the change. Links last 12 hours; the new `get_preview_url` tool gives fresh ones.
+
 ## 0.2.1 — 2026-09-26
 
 - **A site's own scripts are checked in the background.** They run on the user's site right away; a script that is clearly harmful is switched off (the section still renders without it) and the user is emailed. Keep scripts to the section's own interface (the variant skill's `wvf.md` §4 "Review rule"). Replaces "runs without review".

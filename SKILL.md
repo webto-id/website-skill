@@ -65,8 +65,9 @@ my-site/
    - look at every preview. With a browser, check 390, 768 and 1280 px wide, light and dark: no horizontal scroll, headings that wrap well, buttons and text that read on their surface, images that fill their frames. Wait a second before judging: sections with `data-wv-effect` fade in. Without a browser, say so to the user and name this check as not done.
 8. **Subdomain**: `check_subdomain` with the name the user wants; offer the suggestions if it is taken. Let them choose.
 9. **Dry run**: `create_site` WITHOUT `confirm`. Read the whole report (`manifestErrors`, per-variant `lint`, `warnings`, `licenses`); fix and repeat until `ok: true`.
-10. **Confirm with the user**, then `create_site` with `confirm: true`. Save the returned `lock` as `webto.lock.json`. Give them the `previewUrl` (valid 12 hours; they can also open the site in their dashboard).
-11. **Publish on approval**: `publish_site` dry run, then `confirm: true`. Give them the public `url`.
+10. **Confirm with the user**, then `create_site` with `confirm: true`. Save the returned `lock` as `webto.lock.json`.
+11. **Look at the real site before you report.** The write returns `previewUrl` (home page) and `previewPages` (one signed link per page). Open EVERY page in a browser at 390, 768 and 1280 px wide: no horizontal scroll, nothing cut off, images loaded, text readable on its surface, navigation reaching every page. Fix what is broken (`update_site`) and look again. Then give the user the `previewUrl` (valid 12 hours; they can also open the site in their dashboard). Without a browser, say so and name this check as not done.
+12. **Publish on approval**: `publish_site` dry run, then `confirm: true`. Give them the public `url`.
 
 More than 12 designs? Create the site with the 12 that matter most (chrome, hero, the main content), then add the rest with `update_site` — up to 24 per site in total.
 
@@ -78,6 +79,7 @@ More than 12 designs? Create the site with the 12 that matter most (chrome, hero
 4. **Adding one page?** `add_page` is lighter: send just that page (and `baseRevision`, plus `variants` for any new design it uses).
 5. **Validate** as in step 7 above, then **dry run** `update_site` with `baseRevision` = `lock.revision`. Show the user `summary` and `notes` — especially deletions: a deleted page takes its sections, its page settings, and leaves its form submissions without a page. Deleting a page needs `allowPageRemoval: true`, and you send it only after the user explicitly agreed to that deletion.
 6. **Confirm**, then `confirm: true`, and save the new `lock`. If you get `revisionConflict`, the site changed since your export: export again and re-apply your change on top — never force.
+7. **Look before you report**: open the returned `previewPages` (at least every page you changed) at 390, 768 and 1280 px, exactly as in step 11 above. The dry run of an update returns `savedPreview` instead — that is the site as it is NOW, without your change; use it to see what you are about to change, never as proof the change works. Links last 12 hours; `get_preview_url` gives fresh ones.
 
 Blog posts, products, custom domains, payments and integrations (analytics, pixels) are not part of `site.json` and no tool changes them; send the user to the dashboard for those.
 

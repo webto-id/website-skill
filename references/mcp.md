@@ -47,6 +47,7 @@ and create a new one.
 | `add_page` | Tulis | Add one page (needs `baseRevision`) |
 | `begin_asset_upload` | Tulis | An upload session for the user's own images |
 | `publish_site` / `unpublish_site` | Publikasikan | Take a site live (optionally under a new subdomain) / back to draft |
+| `get_preview_url` | Baca | Fresh signed preview links for one site: `previewUrl`, `previewPages`, `expiresAt`, and the public `url` when published |
 
 There is no tool to delete a site, change the plan, set a custom domain,
 touch payments, integrations (analytics, pixels), products or blog posts —
@@ -67,6 +68,26 @@ everything and writes nothing. Read the whole report:
 Fix, dry-run again until `ok: true`, show the user what will happen, then call
 once more with `confirm: true`. Limits: 30 dry runs and 10 writes per 10
 minutes per user — `variant-check site` first, so you arrive with a clean file.
+
+## Look at what you wrote
+
+Every successful write (`create_site`, `update_site`, `add_page`) and every
+`export_site_bundle` returns signed draft links:
+
+- `previewUrl` — the home page, e.g. `https://kopi-senja.wpage.id/?_preview=1&_pt=…`;
+- `previewPages` — `[{ title, slug, url }]`, one per page;
+- `previewExpiresAt` — when the links stop working (12 hours);
+- `url` — the public address, only once the site is published.
+
+Open every page in a browser at 390, 768 and 1280 px wide BEFORE telling the
+user the work is done, and fix what you see first. Links clicked inside the
+preview stay in preview mode. A dry run of `update_site` / `add_page` wrote
+nothing, so it carries `savedPreview` instead: the site as it is saved NOW,
+without your change. When the links have expired, `get_preview_url` with the
+site id gives fresh ones.
+
+The `_pt` token in these links lets anyone holding them see the draft for 12
+hours. Give the links to the user; do not paste them anywhere public.
 
 ## Images
 
