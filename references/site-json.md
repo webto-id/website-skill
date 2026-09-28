@@ -81,6 +81,7 @@ on `background`, and text on `primary` must read too. On an update, OMIT
     "slug": "",                     // "" = homepage; others are slugified ("Menu Kami" → "menu-kami")
     "seoTitle": "Warung Senja — masakan rumahan di Jl. Kaliurang, Yogyakarta",
     "seoDescription": "…",
+    "parent": "layanan",            // OPTIONAL: makes this a sub-page (see below) — not on the homepage
     "showInNavbar": true,           // default true
     "showInFooter": false,          // default false
     "sections": [
@@ -93,6 +94,8 @@ on `background`, and text on `primary` must read too. On an update, OMIT
 
 - `type`: from `catalog.md`. `variant`: `u:@<key>` for your own section (the rule), or a platform variant name from `catalog.md` for the exceptions (`map`, `post`); omitting it gives the type's first platform variant. `content` must match the type's base fields (plus the extension fields your variant declares).
 - The navbar lists the site's pages automatically (those with `showInNavbar`) — do not restate them in `content.links`, which is for EXTRA destinations only.
+- **Sub-pages: `"parent": "<slug>"`** puts a page under another one; the navbar shows it in the parent's dropdown (desktop) and accordion (mobile) — your navbar variant must render that (variant skill `wvf.md` §4b, `examples/navbar-dropdown.astro`). One level only; the parent is another page of this site.json (never the homepage) and itself top-level. Use it when a page has natural children the user named: Layanan → one page per service they offer; Tentang → Tim, Sejarah; Menu → Katering. Two or three services on one Layanan page is better than three thin sub-pages — nest only when each child has content of its own. Every sub-page counts toward the plan's page limit like any page.
+- **On `update_site` / `add_page`:** a page that leaves `parent` out keeps its current parent (by id) — the owner may have nested pages in the editor; `"parent": null` makes it top-level. The export writes `parent` for every sub-page, and a parent renamed in the same update is followed. Deleting a parent page (with `allowPageRemoval`) turns its remaining children into top-level pages; the dry run says so.
 - Links between pages: `/menu`, `/kontak`; to a section on the same page: `#contact`, `#pricing` (every section gets an anchor from its type automatically).
 - Optional per section: `sectionStyles` (background/dividers), `isVisible: false` (kept but hidden). Per page: `themeOverride` — only the fields that page differs on, e.g. `{ "hideNavbar": true }` for a landing page.
 

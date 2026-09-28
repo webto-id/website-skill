@@ -40,6 +40,12 @@ content shape. How it looks is your own WVF variant of that type.
 | Punya logo? Foto usaha / produk / tim? | `asset:<file>` (upload via `begin_asset_upload`), navbar `logoUrl`, hero `images`, gallery |
 | Gaya yang diinginkan? (hangat, modern, mewah, ceria, formal) Warna brand? Ada situs yang Anda suka tampilannya? | the visual direction (SKILL.md step 4): `theme` (see `site-json.md`) and the design language of every section you author |
 
+### Page structure (ask once the business is clear)
+
+| Ask | Goes to |
+|---|---|
+| Halaman apa saja yang Anda inginkan? Ada yang perlu dikelompokkan di bawah satu menu (mis. tiap layanan punya halaman sendiri di bawah "Layanan", atau "Tim" dan "Sejarah" di bawah "Tentang")? | `pages[]`; a grouped page gets `"parent": "<slug>"` (one level — `site-json.md`). Only nest what has its own content; a short list stays on one page. Show the resulting menu tree in the step-3 summary before writing. |
+
 ## Group 3 — by kind of business
 
 Pick the one that fits (or two, for a hybrid). Ask the first 3–5 questions,

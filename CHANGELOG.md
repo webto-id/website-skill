@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.3 — 2026-09-28
+
+- **Sub-pages.** `site.json` pages can carry `"parent": "<slug>"` (one level, not under the home page); the interview asks for the page structure, and the navbar renders children as a dropdown on desktop and an accordion in the mobile drawer (variant skill `wvf.md` §4b). The `warung-senja` example shows one. An update without `parent` keeps what the owner set in the editor; `"parent": null` detaches. Needs `@webto-id/variant-check` ≥ 0.1.39.
+
 ## 0.2.2 — 2026-09-28
 
 - **Look at the real site before reporting.** `create_site`, `update_site` and `add_page` now return `previewUrl` (home page), `previewPages` (one signed link per page), `previewExpiresAt` and, once published, the public `url`. The agent opens every page (at least every changed one) at 390, 768 and 1280 px before telling the user it is done. A dry run against an existing site returns `savedPreview` — the site as it is now, without the change. Links last 12 hours; the new `get_preview_url` tool gives fresh ones.

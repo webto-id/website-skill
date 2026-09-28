@@ -70,6 +70,31 @@
       ]
     },
     {
+      "title": "Nasi Kotak",
+      "slug": "nasi-kotak",
+      "parent": "menu",
+      "seoTitle": "Nasi kotak untuk acara — Warung Senja, Yogyakarta",
+      "sections": [
+        {
+          "type": "products",
+          "variant": "u:@menu-warung",
+          "content": {
+            "heading": "Paket nasi kotak",
+            "subheading": "Minimal 20 kotak, pesan H-2.",
+            "products": [
+              { "title": "Paket hemat", "price": "Rp 20.000", "description": "Nasi, ayam goreng, sayur, sambal." },
+              { "title": "Paket komplit", "price": "Rp 28.000", "description": "Nasi, ayam bakar, tempe, sayur lodeh, buah." }
+            ]
+          }
+        },
+        {
+          "type": "cta",
+          "variant": "u:@cta-warung",
+          "content": { "heading": "Ada acara minggu ini?", "description": "Kirim jumlah kotak dan tanggalnya lewat WhatsApp.", "buttonText": "Pesan nasi kotak", "buttonUrl": "https://wa.me/6281234567890" }
+        }
+      ]
+    },
+    {
       "title": "Kontak",
       "slug": "kontak",
       "sections": [
@@ -81,7 +106,7 @@
     }
   ],
   "variants": [
-    { "key": "navbar-warung", "sectionType": "navbar", "name": "Navbar Warung", "description": "Single-row navbar: brand on the left, page links centred, a rounded WhatsApp button on the right.", "mood": ["warm", "casual"] },
+    { "key": "navbar-warung", "sectionType": "navbar", "name": "Navbar Warung", "description": "Single-row navbar: brand on the left, page links centred with a click/keyboard dropdown for sub-pages, a rounded WhatsApp button on the right; mobile drawer with an accordion per parent page.", "mood": ["warm", "casual"] },
     { "key": "hero-warung", "sectionType": "hero", "name": "Hero Warung", "description": "Two-column hero on the secondary surface with a pill badge, large serif headline, and a slightly tilted photo.", "mood": ["warm", "casual"] },
     { "key": "menu-warung", "sectionType": "products", "name": "Menu Warung", "description": "Menu list in two columns: item name and price joined by a dotted leader, optional thumbnail and one-line description.", "mood": ["warm", "editorial"] },
     { "key": "cta-warung", "sectionType": "cta", "name": "Cta Warung", "description": "Rounded primary-coloured band with a centred heading, one line of text, and a light pill button.", "mood": ["warm", "bold"] },
