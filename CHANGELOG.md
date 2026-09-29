@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.5 — 2026-09-29
+
+- **Group headings** (products by category, FAQ blocks) carry `data-edit-group` so the owner can rename a group inline; `variant-check` ≥ 0.1.41 reports a missing one as the error `text-edit-group-missing` (variant skill `wvf.md` §2.3a). Never restructure a section to avoid the rule.
+
 ## 0.2.4 — 2026-09-29
 
 - **Every field printed as text must be editable inline** (variant skill `wvf.md` §2.3). `variant-check` ≥ 0.1.40 reports a missing `data-edit-field` as the error `text-not-editable`, and `create_site` / `update_site` refuse a changed section file that has one.
