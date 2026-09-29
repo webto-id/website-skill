@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.4 — 2026-09-29
+
+- **Every field printed as text must be editable inline** (variant skill `wvf.md` §2.3). `variant-check` ≥ 0.1.40 reports a missing `data-edit-field` as the error `text-not-editable`, and `create_site` / `update_site` refuse a changed section file that has one.
+
 ## 0.2.3 — 2026-09-28
 
 - **Sub-pages.** `site.json` pages can carry `"parent": "<slug>"` (one level, not under the home page); the interview asks for the page structure, and the navbar renders children as a dropdown on desktop and an accordion in the mobile drawer (variant skill `wvf.md` §4b). The `warung-senja` example shows one. An update without `parent` keeps what the owner set in the editor; `"parent": null` detaches. Needs `@webto-id/variant-check` ≥ 0.1.39.
