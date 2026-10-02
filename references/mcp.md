@@ -104,7 +104,11 @@ Never put image bytes (base64) into a tool call.
 
 ## webto.lock.json
 
-A real write returns `lock`; write it verbatim beside `site.json`:
+A real write (`create_site`, `update_site`, `add_page`) returns `lock`; write
+it verbatim beside `site.json`, replacing the old file. It is the complete lock
+— every one of the user's own variants the site uses, `version` filled —
+exactly what `export_site_bundle` would return at that moment, however few
+variants the write sent:
 
 ```json
 { "lockVersion": 1, "kind": "site", "siteId": "…", "subdomain": "kopi-senja", "revision": "s1-…", "variants": {} }
@@ -115,6 +119,12 @@ send. It changes whenever the site changes — in the dashboard too — so a
 stale one is refused (`revisionConflict: true`): export again, re-apply your
 change to the fresh `site.json`, and retry. Never "force" around it; the
 refusal is what stops you from overwriting the user's own edits.
+
+Beside the lock, a confirmed write returns `changed`: the variants it moved,
+by key — `{ "hero-warung": { "from": 2, "to": 3 } }`. `from: null` means the
+key is new to this site (on `create_site` every key is); `to: null` means no
+section uses it any more; a key that did not move is absent, and `{}` means no
+variant changed.
 
 ## Errors you will meet
 

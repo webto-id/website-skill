@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.6 — 2026-10-02
+
+- **Write tools return the complete lock.** The `lock` from every write (`create_site`, `update_site`, `add_page`) equals what the site export returns at that moment: every variant, `version` filled, the revision after the write. Save it verbatim, replacing `webto.lock.json`. `changed` lists the variants the write moved (`{ key: { from, to } }`; `from: null` = new).
+
 ## 0.2.5 — 2026-09-29
 
 - **Group headings** (products by category, FAQ blocks) carry `data-edit-group` so the owner can rename a group inline; `variant-check` ≥ 0.1.41 reports a missing one as the error `text-edit-group-missing` (variant skill `wvf.md` §2.3a). Never restructure a section to avoid the rule.
