@@ -16,44 +16,47 @@ Notation: `?` = optional, `= x` = default value, `{a, b?}[]` = array of objects.
 
 ### `hero` — Hero
 
-Marketing hero — 32 visual treatments across modern/split/centered/slider families
+Marketing hero — 35 visual treatments across modern/split/centered/slider families
 
 **Base fields:** `headline` string, `subheadline` string?, `ctaText` string = "Mulai Sekarang", `ctaUrl` string = "#", `badge` string?, `images` {url, alt?}[]?
 
 | variant | fits | extra fields | base fields it hides |
 |---|---|---|---|
-| `modern` | Full-width gradient hero | — | — |
-| `modern-fullscreen` | Full-viewport cinematic hero with bottom-anchored text | — | — |
-| `modern-banner` | Compact left-aligned banner with accent border | — | — |
-| `modern-diagonal` | Diagonal image panel with an eyebrow, last-word primary accent headline, and primary + text-link CTAs | `eyebrow` string? = "Platform", `secondaryButtonText` string? = "Pelajari lebih", `secondaryButtonUrl` string? = "#" | `badge` |
-| `modern-parallax` | Immersive full-screen hero with multi-layer parallax scroll depth effect | — | — |
-| `modern-card` | Tall rounded card with full-bleed background image, badge, headline, and dual CTAs (primary + glass secondary) | `secondaryButtonText` string?, `secondaryButtonUrl` string? | — |
-| `modern-video` | Fullscreen hero with a muted looping video behind a dark overlay; the video lazy-mounts after page load and mobile shows the poster image instead | `videoUrl` string?, `overlayOpacity` number? | — |
-| `bento` | Bento grid composition: big headline + CTA tile, image tiles from images[], and a primary-accented stat tile; single-column stack on mobile | `stats` {value, label}[]? = [{"value":"100+","label":"Pelanggan puas"}] | — |
-| `split` | Side-by-side text and image | `secondaryButtonText` string? = "Pelajari Lebih", `secondaryButtonUrl` string? = "#features" | — |
-| `split-reversed` | Image left, text right layout | — | — |
-| `split-stacked` | Centered text above, full-width image below | — | — |
-| `split-overlay` | Text overlaid on full-bleed image with gradient mask | — | — |
-| `split-brutalist` | Bold uppercase text, bordered stats box, marquee strips, and diagonal stripes | `accentTag` string? = "New Release", `secondaryButtonText` string? = "Learn More", `secondaryButtonUrl` string? = "#", `marqueeText` string? = "Design · Build · Ship · Repeat" | — |
-| `split-organic` | Serif heading with morphing blobs, feature list, and natural aesthetic | `accentLabel` string? = "Natural & Organic", `secondaryButtonText` string? = "Learn More", `secondaryButtonUrl` string? = "#" | — |
-| `split-editorial` | Luxe editorial split with serif heading, gold accents, and decorative image frame | `overlineText` string? = "Est. 2024", `secondaryButtonText` string? = "Learn our story", `secondaryButtonUrl` string? = "#", `badges` string[]? = ["Premium Quality","Handcrafted","Limited Edition"], `verticalText` string? = "Collection 2024" | — |
-| `split-sticker-pop` | Neo-brutalist split hero — black uppercase type and press-effect dual CTAs beside a taped, tilted thick-border image frame on a polka-dot backdrop | `secondaryButtonText` string? = "Pelajari Lebih", `secondaryButtonUrl` string? = "#features" | — |
-| `split-profile` | a site about ONE person — headline is their name, one portrait photo, 2-4 short facts; wrong for a business with no face to show | `roleTitle` string? = "Fotografer & Videografer", `secondaryButtonText` string? = "Lihat Portofolio", `secondaryButtonUrl` string? = "#gallery", `socialUrls` string[]?, `facts` {label, value}[]? = [{"label":"Pengalaman","value":"8+ tahun"},{"label":"Berbasis di","value":"Jakarta"}] | — |
-| `centered` | Minimal centered headline | — | `images` |
-| `centered-glass` | Content in glassmorphism card with frosted backdrop | — | `images` |
-| `centered-minimal` | Pure typography with no decorations | — | `images` |
-| `centered-spotlight` | Aurora radial glow behind centered text with grid lines | — | `images` |
-| `centered-mesh` | Organic mesh gradient blobs with noise texture overlay | — | `images` |
-| `centered-cosmic` | Floating orbs, grid overlay, gradient text, and stats row | `stats` {value, label}[]? | `images` |
-| `centered-retro` | Perspective grid floor, neon glow text, sun orb, and scanlines | `stats` {value, label}[]? | `images` |
-| `centered-kinetic` | Animated dot grid and glow with a rotating highlight word and dual CTAs | `rotatingWords` string[]? = ["remember","love","trust","share"], `secondaryButtonText` string? = "Book a demo", `secondaryButtonUrl` string? = "#" | `images` |
-| `centered-sticker-pop` | Neo-brutalist sticker-pop hero — chunky offset-shadow type on a polka-dot backdrop, rotated sticker badge/CTA, and die-cut starburst decorations | `stickerText` string? | `images` |
-| `slider` | Full-width slides with fade transition, centered text overlay, dots and arrows | `autoplay` boolean? = true, `interval` number? = 5000, `slides` {headline?, subheadline?, ctaText?, ctaUrl?}[]? | — |
-| `slider-kenburns` | Slow zoom animation per slide for cinematic feel | `autoplay` boolean? = true, `interval` number? = 5000, `slides` {headline?, subheadline?, ctaText?, ctaUrl?}[]? | — |
-| `slider-cards` | Slides as overlapping cards with center one full-size | `autoplay` boolean? = true, `interval` number? = 5000, `slides` {headline?, subheadline?, ctaText?, ctaUrl?}[]? | — |
-| `slider-split` | Text left, crossfading images right | `autoplay` boolean? = true, `interval` number? = 5000, `slides` {headline?, subheadline?, ctaText?, ctaUrl?}[]? | — |
-| `modern-poster` | one striking photo (images[0]) and a SHORT punchy headline of 2-5 words; weak with a long sentence headline or without a real photo | `secondaryButtonText` string? = "Pelajari Lebih", `secondaryButtonUrl` string? = "#features" | — |
-| `split-colorblock` | one photo (images[0]), a headline of up to ~8 words, and a short badge (2-4 words) for the ink block; weak with no photo | `secondaryButtonText` string? = "Pelajari Lebih", `secondaryButtonUrl` string? = "#features" | — |
+| `modern` | Media: 1 photo (images[0]); without it only blurred colour orbs remain. Headline: up to ~10 words. Best for: a business whose place or atmosphere sells it — venue, landscape, product in use | — | — |
+| `modern-fullscreen` | Media: 1 wide photo (images[0]). Headline: up to ~10 words. Best for: places and experiences — hotels, restaurants, travel, events, interiors | — | — |
+| `modern-banner` | Media: 0-1 photo (optional faded backdrop). Headline: a medium or long sentence reads well. Best for: services that lead with a clear statement rather than a picture — consultants, clinics, agencies, B2B | — | — |
+| `modern-diagonal` | Media: 1 photo (images[0]). Headline: 4-10 words; the last word is accented. Best for: confident service or product brands with one strong photo; fill eyebrow and the secondary button | `eyebrow` string? = "Platform", `secondaryButtonText` string? = "Pelajari lebih", `secondaryButtonUrl` string? = "#" | `badge` |
+| `modern-parallax` | Media: 1 photo (images[0]); the depth effect moves it. Headline: up to ~10 words. Best for: immersive places and food — cafés, resorts, scenic destinations | — | — |
+| `modern-card` | Media: 1 photo (images[0]). Headline: up to ~8 words. Best for: modern product or service brands that want a contained, app-like first screen; fill badge and the secondary button | `secondaryButtonText` string?, `secondaryButtonUrl` string? | — |
+| `modern-video` | Media: a video URL (videoUrl, from the Pixabay video search) AND 1 poster photo (images[0]). Headline: up to ~8 words. Best for: businesses whose activity is the pitch — gyms, events, workshops, travel, food in motion | `videoUrl` string?, `overlayOpacity` number? | — |
+| `bento` | Media: exactly 2 photos (images[0..1]; more are ignored). Headline: up to ~8 words. Best for: offers with a figure to show (stats: the first is the big tile) and two shots of the product or service | `stats` {value, label}[]? = [{"value":"100+","label":"Pelanggan puas"}] | — |
+| `split` | Media: 1 photo (images[0]); without it the right half is blank. Headline: up to ~10 words. Best for: one product, service or person to show beside a clear promise | `secondaryButtonText` string? = "Pelajari Lebih", `secondaryButtonUrl` string? = "#features" | — |
+| `split-reversed` | Media: 1 photo (images[0]); without it the left half is blank. Headline: up to ~10 words. Best for: one product or place that should catch the eye before the promise | — | — |
+| `split-stacked` | Media: 1 wide landscape photo (images[0]). Headline: up to ~12 words. Best for: a panoramic shot — a shop interior, a team at work, a spread of dishes or products | — | — |
+| `split-overlay` | Media: 1 photo (images[0]) whose subject sits on the right. Headline: up to ~10 words. Best for: dramatic, atmospheric brands — fashion, photography, bars, premium services | — | — |
+| `split-brutalist` | Media: 1 photo (images[0]). Headline: SHORT, 2-5 words (set very large and repeated in the marquee). Best for: loud, raw brands — streetwear, workshops, barbers, construction; fill accentTag and marqueeText | `accentTag` string? = "New Release", `secondaryButtonText` string? = "Learn More", `secondaryButtonUrl` string? = "#", `marqueeText` string? = "Design · Build · Ship · Repeat" | — |
+| `split-organic` | Media: 1 photo (images[0]). Headline: up to ~10 words. Best for: handmade, natural or family businesses — bakeries, herbal, crafts, kids; fill accentLabel | `accentLabel` string? = "Natural & Organic", `secondaryButtonText` string? = "Learn More", `secondaryButtonUrl` string? = "#" | — |
+| `split-editorial` | Media: 1 portrait-orientation photo (images[0]). Headline: up to ~10 words. Best for: refined, magazine-like brands — boutiques, salons, jewellery, interiors; fill overlineText, badges and verticalText | `overlineText` string? = "Est. 2024", `secondaryButtonText` string? = "Learn our story", `secondaryButtonUrl` string? = "#", `badges` string[]? = ["Premium Quality","Handcrafted","Limited Edition"], `verticalText` string? = "Collection 2024" | — |
+| `split-sticker-pop` | Media: 1 photo (images[0]). Headline: short to medium, set in heavy uppercase. Best for: youthful, cheerful brands — snacks, toys, events, creative studios | `secondaryButtonText` string? = "Pelajari Lebih", `secondaryButtonUrl` string? = "#features" | — |
+| `split-profile` | Media: 1 portrait photo of the person (images[0]). Headline: their name. Best for: a site about ONE person — 2-4 short facts and social links; wrong for a business with no face to show | `roleTitle` string? = "Fotografer & Videografer", `secondaryButtonText` string? = "Lihat Portofolio", `secondaryButtonUrl` string? = "#gallery", `socialUrls` string[]?, `facts` {label, value}[]? = [{"label":"Pengalaman","value":"8+ tahun"},{"label":"Berbasis di","value":"Jakarta"}] | — |
+| `centered` | Media: none. Headline: up to ~12 words. Best for: clear, professional services where the promise is the message — consultants, education, finance | — | `images` |
+| `centered-glass` | Media: none. Headline: up to ~10 words. Best for: apps, software and digital services | — | `images` |
+| `centered-minimal` | Media: none. Headline: medium to long; the words carry the page. Best for: understated, confident brands — law, architecture, premium consulting, writers | — | `images` |
+| `centered-spotlight` | Media: none. Headline: up to ~10 words. Best for: software, agencies, product launches | — | `images` |
+| `centered-mesh` | Media: none. Headline: up to ~10 words. Best for: gentle brands without a strong photo — wellness, coaching, community, kids | — | `images` |
+| `centered-cosmic` | Media: none; needs stats (3 short real figures), otherwise English placeholder stats show. Headline: short to medium. Best for: tech or growth businesses with numbers to show | `stats` {value, label}[]? | `images` |
+| `centered-retro` | Media: none; needs stats (3 short real figures). Headline: SHORT, heavy uppercase. Best for: gaming, music, nightlife, retro-themed brands | `stats` {value, label}[]? | `images` |
+| `centered-kinetic` | Media: none; needs rotatingWords (3-5 single words that complete the headline). Headline: a short lead phrase. Best for: businesses with several audiences or offers — agencies, courses, multi-service shops | `rotatingWords` string[]? = ["remember","love","trust","share"], `secondaryButtonText` string? = "Book a demo", `secondaryButtonUrl` string? = "#" | `images` |
+| `centered-sticker-pop` | Media: none; fill stickerText. Headline: SHORT, heavy uppercase. Best for: playful promos, snacks, events, kids | `stickerText` string? | `images` |
+| `slider` | Media: 3+ distinct photos (images[]; with 1 photo it is a static hero). Headline: up to ~10 words; optional per-slide text in slides[]. Best for: several products, rooms, promos or highlights | `autoplay` boolean? = true, `interval` number? = 5000, `slides` {headline?, subheadline?, ctaText?, ctaUrl?}[]? | — |
+| `slider-kenburns` | Media: 3+ distinct photos. Headline: up to ~10 words. Best for: places and experiences that deserve a slow, cinematic look — resorts, weddings, restaurants | `autoplay` boolean? = true, `interval` number? = 5000, `slides` {headline?, subheadline?, ctaText?, ctaUrl?}[]? | — |
+| `slider-cards` | Media: 3+ distinct photos (the overlap needs at least 2). Headline: short to medium. Best for: shops with several products or packages to flip through | `autoplay` boolean? = true, `interval` number? = 5000, `slides` {headline?, subheadline?, ctaText?, ctaUrl?}[]? | — |
+| `slider-split` | Media: 3+ distinct photos. Headline: up to ~10 words; per-slide text in slides[]. Best for: several services or collections, each with its own line | `autoplay` boolean? = true, `interval` number? = 5000, `slides` {headline?, subheadline?, ctaText?, ctaUrl?}[]? | — |
+| `modern-poster` | Media: 1 striking photo (images[0]). Headline: SHORT, 2-5 punchy words (sized off the viewport; weak with a long sentence). Best for: a business that sells on one strong photo — a plated dish, a gym floor, a lookbook shot, an event crowd, a barber at work | `secondaryButtonText` string? = "Pelajari Lebih", `secondaryButtonUrl` string? = "#features" | — |
+| `split-colorblock` | Media: 1 photo (images[0]); weak with no photo. Headline: up to ~8 words, plus a short badge (2-4 words) for the ink block. Best for: brands with a strong product or atmosphere photo that want their brand colour front and centre — coffee shops, gyms, fashion drops, barbershops, promos | `secondaryButtonText` string? = "Pelajari Lebih", `secondaryButtonUrl` string? = "#features" | — |
+| `split-tilted-card` | Media: 1 photo (images[0]); without it the card shows an empty frame. Headline: up to ~10 words. Best for: cheerful neighbourhood businesses showing one product, place or team — bakeries, cafés, pet shops, kids' classes, local services; fill badge and the secondary button | `secondaryButtonText` string? = "Pelajari Lebih", `secondaryButtonUrl` string? = "#features" | — |
+| `split-polaroid` | Media: 1 photo (images[0]) that still reads cropped square; weak with a wide landscape-only shot. Headline: up to ~10 words, plus a short caption badge (2-5 words, e.g. a place or a 'since' line). Best for: homely, personal businesses — home kitchens, crafts, florists, family shops, tutoring | `secondaryButtonText` string? = "Pelajari Lebih", `secondaryButtonUrl` string? = "#features" | — |
+| `split-arch` | Media: 1 portrait-friendly photo (images[0], cropped 4:5). Headline: up to ~10 words. Best for: gentle, welcoming services — wellness, skincare, soft-touch clinics, cafés, family services; fill 2-3 highlights of 2-5 words | `highlights` {text}[]?, `secondaryButtonText` string?, `secondaryButtonUrl` string? | — |
 
 ## Content
 

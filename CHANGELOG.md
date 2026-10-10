@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.7 — 2026-10-10
+
+- **Product pages.** `"productLayout"` (top level of `site.json`) picks the layout of every `/product/<slug>` page: `"classic"` (default), `"landing"`, `"minimal"`, or a `product-detail` variant (`"u:@<key>"`, fields in `"productLayoutContent"`). See `site-json.md`.
+- **Catalog refreshed** (`catalog.md`): the hero list now has 35 treatments.
+
 ## 0.2.6 — 2026-10-02
 
 - **Write tools return the complete lock.** The `lock` from every write (`create_site`, `update_site`, `add_page`) equals what the site export returns at that moment: every variant, `version` filled, the revision after the write. Save it verbatim, replacing `webto.lock.json`. `changed` lists the variants the write moved (`{ key: { from, to } }`; `from: null` = new).
