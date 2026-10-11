@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.8 — 2026-10-11
+
+- **Products in `site.json`.** `"sampleProducts"` (top level, max 8) creates the user's products with the site, active — only products, prices and photos the user actually gave you. On `update_site` they are upserted by slug: an existing product keeps its file, stock and on/off state; products you do not send are untouched. Files, stock, webinar links and payment settings stay in the dashboard. See `site-json.md`.
+
 ## 0.2.7 — 2026-10-10
 
 - **Product pages.** `"productLayout"` (top level of `site.json`) picks the layout of every `/product/<slug>` page: `"classic"` (default), `"landing"`, `"minimal"`, or a `product-detail` variant (`"u:@<key>"`, fields in `"productLayoutContent"`). See `site-json.md`.
