@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.9 — 2026-10-20
+
+- **`sampleProducts[].orderVia`** in site.json (`references/site-json.md`): `"whatsapp"` for a **physical** product whose orders the user takes by WhatsApp only (a rental, a negotiated service, a "mulai dari" B2B price), and only when the user says so. Other kinds are refused because the platform delivers them after payment. `update_site` leaves the flag alone when the key is absent.
+
 ## 0.2.8 — 2026-10-11
 
 - **Products in `site.json`.** `"sampleProducts"` (top level, max 8) creates the user's products with the site, active — only products, prices and photos the user actually gave you. On `update_site` they are upserted by slug: an existing product keeps its file, stock and on/off state; products you do not send are untouched. Files, stock, webinar links and payment settings stay in the dashboard. See `site-json.md`.
