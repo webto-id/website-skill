@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.11 — 2026-10-29
+
+- **News blog variants in the catalog** (`references/catalog.md`): `news-headline` (lead + two medium stories + a Terkini column, the top of a news homepage), `news-ticker` (a thin breaking-news strip), `news-category-block` (one block per category, database mode with `category` set) and `news-index` (the /berita index and archives, paginated). Blog `posts` items also take an optional `category`.
+- **No `samplePosts` on a website** (`references/site-json.md`): that key (sample articles) belongs to marketplace templates and `create_site` / `update_site` refuse it with a reason. A website's blog articles are the owner's own writing, never touched by a bundle; the export lists them under `notCarried`.
+
 ## 0.2.10 — 2026-10-29
 
 - **One upload carries up to 24 own variants** (was 12): `create_site` / `update_site` take up to 24 in `variants`, and `get_plan_limits` reports `maxPerUpload` 24. A site still holds at most 24 of its own variants in total.

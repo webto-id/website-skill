@@ -235,7 +235,7 @@ Team member showcase
 
 Blog or news article previews
 
-**Base fields:** `heading` string, `subheading` string?, `source` "manual"|"database" = "manual", `posts` {title, excerpt, image?, date?, author?, url?}[], `showCount` number = 6, `category` string?, `showPagination` boolean = true, `showAuthor` boolean = true, `showDate` boolean = true, `showExcerpt` boolean = true
+**Base fields:** `heading` string, `subheading` string?, `source` "manual"|"database" = "manual", `posts` {title, excerpt, image?, date?, author?, url?, category?}[], `showCount` number = 6, `category` string?, `showPagination` boolean = true, `showAuthor` boolean = true, `showDate` boolean = true, `showExcerpt` boolean = true
 
 | variant | fits | extra fields | base fields it hides |
 |---|---|---|---|
@@ -249,6 +249,10 @@ Blog or news article previews
 | `timeline` | Articles on a vertical rail with accent date nodes — activity log style | — | — |
 | `masonry` | Cards of varying heights flowing in CSS masonry columns | — | — |
 | `sticker-pop` | Post cards as tilted stickers with a rotated date chip on the top edge and a chunky press-effect read-more button | — | — |
+| `news-headline` | Media: a photo on each of the lead and two medium stories (a gradient stands in when missing). Needs 4+ posts for the full layout, 6-8 fills the Terkini column. Best for: the top of a news-portal homepage — online news, community or campus media | — | — |
+| `news-ticker` | Media: none. Needs 3+ posts with short headlines. Best for: a thin breaking-news strip above the headline block of a news homepage | — | `heading`, `subheading`, `showAuthor`, `showDate`, `showExcerpt` |
+| `news-category-block` | Media: thumbnails on 4-5 posts (lead large, others mini). Needs 4-5 posts of one category. Best for: one block per category on a news homepage (database mode, category set); an empty heading falls back to the category name | `viewAllText` string?, `viewAllUrl` string? | `showAuthor` |
+| `news-index` | Media: a small thumbnail per post (optional). Handles 6-12 posts and paginates. Best for: the /berita index page and category, tag and author archives | — | — |
 
 ### `map` — Map / Location
 
