@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.10 — 2026-10-29
+
+- **One upload carries up to 24 own variants** (was 12): `create_site` / `update_site` take up to 24 in `variants`, and `get_plan_limits` reports `maxPerUpload` 24. A site still holds at most 24 of its own variants in total.
+
 ## 0.2.9 — 2026-10-20
 
 - **`sampleProducts[].orderVia`** in site.json (`references/site-json.md`): `"whatsapp"` for a **physical** product whose orders the user takes by WhatsApp only (a rental, a negotiated service, a "mulai dari" B2B price), and only when the user says so. Other kinds are refused because the platform delivers them after payment. `update_site` leaves the flag alone when the key is absent.

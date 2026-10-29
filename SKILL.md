@@ -48,7 +48,7 @@ my-site/
 
 ## Workflow: a new site
 
-1. **Check the connection and the plan.** Call `list_my_sites` and `get_plan_limits`. A Free account holds 3 websites, 5 pages per site (blog posts count), 15 sections per page; every site holds at most **24 of its own variants**, and one upload carries at most **12**. If what the user wants does not fit, say so plainly before interviewing — upgrading happens only in their dashboard.
+1. **Check the connection and the plan.** Call `list_my_sites` and `get_plan_limits`. A Free account holds 3 websites, 5 pages per site (blog posts count), 15 sections per page; every site holds at most **24 of its own variants**, and one upload carries at most **24**. If what the user wants does not fit, say so plainly before interviewing — upgrading happens only in their dashboard.
 2. **Interview** (`references/interview.md`): the core group first, then their business type's group, then the look: what the business should feel like (hangat, rapi, mewah, ceria, tegas), brand colors, a logo, photos they own, a site they like. Offer stock photos (`__IMG__:`) or illustrations (`__ILLU__:`) where they have none — and say which you used.
 3. **Plan the structure** — pages and sections, mapped from the answers. Typical small business: Beranda (hero, services/menu, testimonials if they gave any, faq, cta), plus 1–3 pages (Layanan/Menu, Tentang, Kontak). Fewer, fuller pages beat many thin ones. When a page has real children (several services each with its own detail, Tentang → Tim), make them sub-pages with `"parent": "<slug>"` (one level; `references/site-json.md`) and author a navbar that renders them as a dropdown/accordion — never flatten them into the top bar.
 4. **Set the visual direction before writing any file.** From the business and the user's taste, decide ONE design language and hold it across every section:
@@ -92,7 +92,7 @@ Blog posts, products, custom domains, payments and integrations (analytics, pixe
 | Sections per page | 15 | 1000 |
 | Content per section | 50 KB | 50 KB |
 | Own WVF variants per site | 24 | 24 |
-| Own WVF variants per upload | 12 | 12 |
+| Own WVF variants per upload | 24 | 24 |
 | One `.astro` source | 128 KB | 128 KB |
 | Own images per bundle (`asset:`) | 20 files, 2 MB each, PNG/JPG/WebP | same |
 

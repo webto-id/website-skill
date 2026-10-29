@@ -39,10 +39,10 @@ and create a new one.
 | Tool | Scope | Does |
 |---|---|---|
 | `list_my_sites` | Baca | The user's websites (not template drafts): id, name, subdomain, status, public url, page/post counts, the site's limits, and whether a new site fits the account |
-| `get_plan_limits` | Baca | Free/Pro limits, the account's room for a new site, `variants` (`maxPerSite` 24, `maxPerUpload` 12); with `siteId`, that site's plan, pages used/left and `variantsUsed`/`variantsLeft` |
+| `get_plan_limits` | Baca | Free/Pro limits, the account's room for a new site, `variants` (`maxPerSite` 24, `maxPerUpload` 24); with `siteId`, that site's plan, pages used/left and `variantsUsed`/`variantsLeft` |
 | `check_subdomain` | Baca | Is `<name>.wpage.id` free? normalised name, why not, up to 3 free alternatives |
 | `export_site_bundle` | Baca | The site as a folder: `site.json` with ids and `variants[]`, `files` (`sections/<key>.astro` of the site's own variants, plus samples), `notCarried`, and `lock` |
-| `create_site` | Tulis | A new DRAFT website from `manifest` (+ `variants` with each `source`, max 12, `subdomain`, `assets`) |
+| `create_site` | Tulis | A new DRAFT website from `manifest` (+ `variants` with each `source`, max 24, `subdomain`, `assets`) |
 | `update_site` | Tulis | Change a site by diff (needs `baseRevision`); `variants` = only the files you changed or added |
 | `add_page` | Tulis | Add one page (needs `baseRevision`) |
 | `begin_asset_upload` | Tulis | An upload session for the user's own images |
@@ -136,7 +136,7 @@ variant changed.
 | `variant "u:…" bukan milik Anda dan belum dibeli` | A `u:<id>` from someone else's work. Author your own variant (`u:@<key>`) instead. |
 | `variant "u:@…" tidak ada di variants[] dan bukan variant milik situs ini` | A key the site does not have: add its entry and `source` to `variants`, or fix the key (after an export, keys are the file names in `sections/`). |
 | `… melewati batas 24 per situs` | The site already holds many own variants. Reuse a key across pages instead of a new file; changing a file under an existing key is a new version, not a new variant. |
-| `variants` has more than 12 items (a schema error on the call) | One upload carries at most 12 new/changed files. Send the rest in a following `update_site`. |
+| `variants` has more than 24 items (a schema error on the call) | One upload carries at most 24 new/changed files, and a site holds at most 24 of its own variants. Reuse keys for designs that repeat. |
 | `… tidak dikenal di situs ini — ekspor ulang` | An `id` that is not this site's — you edited a stale or foreign file. Export again. |
 | `… akan DIHAPUS … kirim allowPageRemoval: true` | Your file drops a page. Put it back, or ask the user and then send the flag. |
 | `NOT_FOUND Situs tidak ditemukan` | Wrong id, not this user's site, or a template draft (the other tool family). |
