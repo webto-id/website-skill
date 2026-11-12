@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.13 — 2026-11-12
+
+- **WebGL effects** (`SKILL.md`; variant skill `references/webgl.md`; `variant-check` ≥ 0.1.61): a section may use the platform's OGL (`data-uses="ogl"`) for an image ripple or a shader background over a poster image. At most one such section per page, and only when the user wants that feel.
+
 ## 0.2.12 — 2026-11-12
 
 - **`theme.smoothScroll`** (`references/site-json.md`): `true` turns on smooth, inertial mouse-wheel scrolling for the whole site (Lenis, one instance the platform runs; default `false`). Touch, the editor and visitors who prefer reduced motion keep normal scrolling; pinned or scrubbed GSAP sections stay in sync. Suits an editorial, portfolio or premium-brand feel; leave it off for stores and long forms. A theme you send replaces the old one, so keep the key in every `update_site` that should keep it on. Never start Lenis or another scroll library in a variant script.
