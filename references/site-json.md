@@ -68,6 +68,17 @@ Pick a palette that fits the business and has contrast: `foreground` must read
 on `background`, and text on `primary` must read too. On an update, OMIT
 `theme` to keep the site's theme; a theme you send replaces it whole.
 
+### `smoothScroll` (smooth wheel scrolling)
+
+`"smoothScroll": true` turns on smooth, inertial mouse-wheel scrolling for the
+whole site (Lenis, one instance the platform runs; default `false`). Touch
+scrolling, the editor and visitors who prefer reduced motion keep normal
+scrolling. Pinned or scrubbed GSAP sections stay in sync with it. Turn it on
+for an editorial, portfolio or premium-brand feel; leave it off for stores and
+long forms. Because a theme you send replaces the old one, keep
+`smoothScroll` in every update that should keep it on. Never start Lenis or
+another scroll library in a variant script.
+
 ## siteSections and pages
 
 ```jsonc

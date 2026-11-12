@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.12 — 2026-11-12
+
+- **`theme.smoothScroll`** (`references/site-json.md`): `true` turns on smooth, inertial mouse-wheel scrolling for the whole site (Lenis, one instance the platform runs; default `false`). Touch, the editor and visitors who prefer reduced motion keep normal scrolling; pinned or scrubbed GSAP sections stay in sync. Suits an editorial, portfolio or premium-brand feel; leave it off for stores and long forms. A theme you send replaces the old one, so keep the key in every `update_site` that should keep it on. Never start Lenis or another scroll library in a variant script.
+
 ## 0.2.11 — 2026-10-29
 
 - **News blog variants in the catalog** (`references/catalog.md`): `news-headline` (lead + two medium stories + a Terkini column, the top of a news homepage), `news-ticker` (a thin breaking-news strip), `news-category-block` (one block per category, database mode with `category` set) and `news-index` (the /berita index and archives, paginated). Blog `posts` items also take an optional `category`.
