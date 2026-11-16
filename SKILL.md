@@ -30,6 +30,7 @@ my-site/
 - `references/interview.md` — what to ask, per kind of business, and which section/field each answer fills.
 - `references/site-json.md` — the `site.json` format, ids, images, theme, `variants[]`.
 - `references/mcp.md` — connecting the `webto` MCP server and every tool's contract.
+- Optional: the **webto-3d-effects** skill, only when the user wants a 3D look (a product that turns as the visitor scrolls, a photo with depth, a jar label that turns). It builds on the variant skill; if it is not installed and the user asks for 3D, tell them to install it.
 - `references/catalog.md` — every section type with its base fields (generated). Use it for the `content` shape of each type; its platform variants are for the few exceptions in rule 4.
 - `examples/warung-senja/` — a complete small site with five authored sections (navbar, hero, menu, cta, footer) that passes `variant-check site`. Its business, prices and numbers are fictional; on a real site every such fact comes from the user.
 
