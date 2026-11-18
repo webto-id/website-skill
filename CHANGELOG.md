@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.15 — 2026-11-18
+
+- `site-json.md`: `asset:<file>` also takes a `.glb` (≤ 10 MB) or an `.mp4` (≤ 15 MB) for a custom 3D variant.
+
 ## 0.2.14 — 2026-11-16
 
 - **3D effects: the optional webto-3d-effects skill** (repo `webto-id/3d-effects-skill`), named in "Read first": use it only when the user wants a 3D look (a product that turns on scroll, a photo with depth, a jar label that turns), and tell them to install it if it is missing.

@@ -128,7 +128,7 @@ Never copy ids between sites, never invent them, never renumber them.
 
 In any image field (`images[].url`, `logoUrl`, `features[].image`, …):
 
-- `asset:<file>` — the user's own photo or logo, uploaded with `begin_asset_upload` (PNG/JPG/WebP, ≤ 2 MB each, ≤ 20 files). Use this for anything that is *theirs*: logo, storefront, team, products.
+- `asset:<file>` — the user's own photo or logo, uploaded with `begin_asset_upload` (PNG/JPG/WebP, ≤ 2 MB each, ≤ 20 files; a custom 3D variant can also take a `.glb` ≤ 10 MB or an `.mp4` ≤ 15 MB). Use this for anything that is *theirs*: logo, storefront, team, products.
 - `__IMG__:<english query>` — a stock photo the platform picks from Unsplash at creation (`__IMG__:cozy coffee shop interior warm light`). Only for mood pictures, never to pretend to be their product or their people.
 - `__ILLU__:<query>` — a platform illustration.
 - A full `https://…` URL the user gave you and has the right to use.
