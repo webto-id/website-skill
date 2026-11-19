@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.16 — 2026-11-19
+
+- **Handing a site over** (`references/mcp.md`): `create_site_handoff` invites a client's webto account, by email, to take a finished site over. It needs the new token permission **Serah terima**, which **Tulis** does not include. The dry run lists blockers and what moves, is copied and is cleared, including buyer-data counts; send the invitation only after the user's yes. The client accepts from the email within 7 days; the agent never sees the link and cannot accept or cancel.
+
 ## 0.2.15 — 2026-11-18
 
 - `site-json.md`: `asset:<file>` also takes a `.glb` (≤ 10 MB) or an `.mp4` (≤ 15 MB) for a custom 3D variant.

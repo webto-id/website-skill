@@ -13,6 +13,9 @@ and stop there.
    - **Tulis** — create draft sites, update them, add pages, upload images;
    - **Publikasikan** — take a site live and back offline. Leave it unticked if
      the user wants to press Publish themselves; the skill then hands over.
+   - **Serah terima** — send a site handoff invitation to another account
+     (`create_site_handoff`). Not included in **Tulis**; tick it only when the
+     user wants the agent to hand sites over to clients.
 2. Copy the token (shown once) into the environment as `WEBTO_TOKEN`
    (`setx WEBTO_TOKEN "…"` on Windows, `export WEBTO_TOKEN="…"` on
    macOS/Linux; open a new terminal after `setx`).
@@ -48,10 +51,34 @@ and create a new one.
 | `begin_asset_upload` | Tulis | An upload session for the user's own images |
 | `publish_site` / `unpublish_site` | Publikasikan | Take a site live (optionally under a new subdomain) / back to draft |
 | `get_preview_url` | Baca | Fresh signed preview links for one site: `previewUrl`, `previewPages`, `expiresAt`, and the public `url` when published |
+| `create_site_handoff` | Serah terima | Invite another webto account (by email) to take the site over: dry run lists `blockers` and the summary; `confirm: true` emails the invitation |
 
 There is no tool to delete a site, change the plan, set a custom domain,
-touch payments, integrations (analytics, pixels), products or blog posts —
-those stay in the dashboard. Say so instead of looking for a way.
+touch payments, integrations (analytics, pixels), products or blog posts,
+or accept or cancel a site handoff — those stay in the dashboard. Say so
+instead of looking for a way.
+
+## Handing a site over
+
+When the user built a site for a client who bought it outright, the site can
+move to the client's own account. `create_site_handoff` with `siteId` and the
+client's `toEmail`:
+
+- the dry run returns `blockers` (one sentence each: an active Pro
+  auto-renewal, unfinished orders, an agency host, a domain still being
+  processed, …) and the summary: `carries` (Pro term, AI CS add-on, domains,
+  Marketplace licenses, buyer-data counts), `copies` (the user's own variants
+  the client gets a copy of) and `cleared` (payment accounts, tracking,
+  integrations, shipping credentials and other settings bound to the user);
+- show the user that summary, including the buyer-data counts, and call
+  again with `confirm: true` only after their explicit yes;
+- the client gets an email link valid 7 days and must sign in with THAT
+  email and accept in the dashboard. You never see the link and cannot
+  accept for them. Until they accept, the site stays the user's.
+
+Blockers are fixed by the user in the dashboard; then dry-run again. One
+pending handoff per site: to change the recipient, the user cancels the
+pending one in the dashboard first.
 
 ## Every write: dry run, then confirm
 
@@ -141,3 +168,4 @@ variant changed.
 | `… akan DIHAPUS … kirim allowPageRemoval: true` | Your file drops a page. Put it back, or ask the user and then send the flag. |
 | `NOT_FOUND Situs tidak ditemukan` | Wrong id, not this user's site, or a template draft (the other tool family). |
 | `This token lacks the sites:… scope` | The token was created without that box ticked; the user makes a new one. |
+| `Sudah ada serah terima tertunda untuk situs ini` | A handoff is already pending; the user cancels it in the dashboard before a new one. |
