@@ -95,6 +95,8 @@ another scroll library in a variant script.
     "parent": "layanan",            // OPTIONAL: makes this a sub-page (see below) — not on the homepage
     "showInNavbar": true,           // default true
     "showInFooter": false,          // default false
+    "ogImage": "asset:og-beranda.jpg", // OPTIONAL share picture (see below)
+    "noindex": false,               // OPTIONAL: true = search engines skip this page
     "sections": [
       { "type": "hero", "variant": "u:@hero-warung", "content": { "headline": "…", "ctaText": "Lihat menu", "ctaUrl": "/menu", "images": [{ "url": "asset:warung.jpg", "alt": "Bagian depan Warung Senja" }] } },
       { "type": "cta", "variant": "u:@cta-warung", "content": { "heading": "…", "buttonText": "Chat WhatsApp", "buttonUrl": "https://wa.me/6281234567890" } }
@@ -103,10 +105,11 @@ another scroll library in a variant script.
 ]
 ```
 
-- `type`: from `catalog.md`. `variant`: `u:@<key>` for your own section (the rule), or a platform variant name from `catalog.md` for the exceptions (`map`, `post`); omitting it gives the type's first platform variant. `content` must match the type's base fields (plus the extension fields your variant declares).
+- `type`: from `catalog.md`. `variant`: `u:@<key>` for your own section (the rule), or a platform variant name from `catalog.md` for the exception (`post`); omitting it gives the type's first platform variant. `content` must match the type's base fields (plus the extension fields your variant declares).
 - The navbar lists the site's pages automatically (those with `showInNavbar`) — do not restate them in `content.links`, which is for EXTRA destinations only.
 - **Sub-pages: `"parent": "<slug>"`** puts a page under another one; the navbar shows it in the parent's dropdown (desktop) and accordion (mobile) — your navbar variant must render that (variant skill `wvf.md` §4b, `examples/navbar-dropdown.astro`). One level only; the parent is another page of this site.json (never the homepage) and itself top-level. Use it when a page has natural children the user named: Layanan → one page per service they offer; Tentang → Tim, Sejarah; Menu → Katering. Two or three services on one Layanan page is better than three thin sub-pages — nest only when each child has content of its own. Every sub-page counts toward the plan's page limit like any page.
 - **On `update_site` / `add_page`:** a page that leaves `parent` out keeps its current parent (by id) — the owner may have nested pages in the editor; `"parent": null` makes it top-level. The export writes `parent` for every sub-page, and a parent renamed in the same update is followed. Deleting a parent page (with `allowPageRemoval`) turns its remaining children into top-level pages; the dry run says so.
+- **Share picture and search visibility, per page:** `"ogImage"` is what WhatsApp, Facebook and X show when a link to that page is shared — an https URL of a JPG/PNG/WebP, or `"asset:<file>"` uploaded with `begin_asset_upload` like any bundle photo (1200×630 works everywhere; SVG is refused). Set it only from a photo the user gave you or one already in the site; without it the platform picks one. `"noindex": true` keeps a page out of search engines and the sitemap — for a thank-you page, a private offer, a page meant only for an ad. Both are checked by `variant-check site` (≥ 0.1.66) and by the server. **On `update_site` / `add_page`:** leaving them out KEEPS what is stored (the owner may have set them in the dashboard); `"ogImage": null` removes the picture, `"noindex": false` turns indexing back on. The export writes both (an uploaded picture comes back as its `/r2/…` path — send it back as is), and the dry run lists every change.
 - Links between pages: `/menu`, `/kontak`; to a section on the same page: `#contact`, `#pricing` (every section gets an anchor from its type automatically).
 - Optional per section: `sectionStyles` (background/dividers), `isVisible: false` (kept but hidden). Per page: `themeOverride` — only the fields that page differs on, e.g. `{ "hideNavbar": true }` for a landing page.
 

@@ -34,7 +34,7 @@ content shape. How it looks is your own WVF variant of that type.
 | Ask | Goes to |
 |---|---|
 | Alamat lengkap (jalan, kota, kode pos)? | `businessProfile.address` {street, city, region, postalCode, country}; `map.address` and `contact.address` |
-| Link Google Maps? | Not needed for the map itself: the `map` section draws the map from `address`. A share link (`maps.app.goo.gl/…`) cannot be embedded — use it only where a variant has a "directions" link field (`mapsLinkUrl`). If they want the exact pin, ask for Google Maps → Bagikan → **Sematkan peta** and put that iframe code in `map.mapEmbedUrl`. |
+| Link Google Maps? | Not needed for the map itself: `<MapEmbed />` in your `map`/`contact` variant (or a platform `map` section) draws the map from `address`. A share link (`maps.app.goo.gl/…`) cannot be embedded — use it only where a variant has a "directions" link field (`mapsLinkUrl`). If they want the exact pin, ask for Google Maps → Bagikan → **Sematkan peta** and put that iframe code in `map.mapEmbedUrl`. |
 | Jam buka? | `businessProfile.openingHours` [{days: ["Mo",…], open: "08:00", close: "17:00"}]; `map.hours` as text |
 | Instagram / TikTok / Facebook / YouTube / marketplace links? | `businessProfile.socialLinks`, footer `links` |
 | Punya logo? Foto usaha / produk / tim? | `asset:<file>` (upload via `begin_asset_upload`), navbar `logoUrl`, hero `images`, gallery |
