@@ -53,6 +53,10 @@ and create a new one.
 | `get_preview_url` | Baca | Fresh signed preview links for one site: `previewUrl`, `previewPages`, `expiresAt`, and the public `url` when published |
 | `create_site_handoff` | Serah terima | Invite another webto account (by email) to take the site over: dry run lists `blockers` and the summary; `confirm: true` emails the invitation |
 
+Selling a template on the marketplace (template drafts, listings and their
+screenshots, with `begin_listing_screenshot_upload`) is a different tool family:
+see the `html-to-webto-template` skill, `references/mcp.md`.
+
 There is no tool to delete a site, change the plan, set a custom domain,
 touch payments, integrations (analytics, pixels), products or blog posts,
 or accept or cancel a site handoff — those stay in the dashboard. Say so

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.18 — 2026-11-20
+
+- **Listing screenshots through the token** (`mcp.md`). `begin_listing_screenshot_upload` gives the upload URL and the limits (6 per listing, 2 MB each, JPG/PNG/WebP); POST each image with the token, then pass the returned keys as `screenshots` to `create_template_listing` / `update_template_listing`. The dry run lists what is added and removed; `null` clears. Only images uploaded by the same account are accepted; a URL is refused.
+
 ## 0.2.17 — 2026-11-20
 
 - **The map is no longer an exception.** A site written all in WVF puts its Google map in its own `map` or `contact` variant with `<MapEmbed />`; the platform `map` section is not needed for it (`SKILL.md` rule 4, `catalog.md`, `interview.md`).
