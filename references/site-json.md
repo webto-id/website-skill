@@ -12,6 +12,7 @@ export — an `id` on every page and section.
   "siteType": "website",            // "website" | "landing" | "personal" — exactly these
   "aiDescription": "Warung makan…",   // 1-3 sentences; feeds the site's AI context (llms.txt, blog)
   "businessProfile": { … },         // strongly recommended, see below
+  "llmsTxt": "# Warung Senja\n…",  // optional: the site's /llms.txt (markdown), see below
   "theme": { … },                   // optional; omitted keys take platform defaults
   "siteSections": [ … ],            // chrome: exactly one navbar (header), optional banner, footer
   "pages": [ … ],                   // one page must have slug "" (the homepage)
@@ -47,6 +48,58 @@ FoodEstablishment, LodgingBusiness, SportsActivityLocation,
 EducationalOrganization. It drives the site's structured data (Google rich
 results). `phone` also switches on the floating WhatsApp button when the site
 is created.
+`logoUrl` takes the user's logo as `"asset:<file>"` (uploaded with
+`begin_asset_upload`), on `create_site` and on `update_site` alike.
+
+**On `update_site`:** leaving `aiDescription` or `businessProfile` out keeps
+what is stored. A `businessProfile` you send REPLACES the stored one whole, so
+start from the exported one and change only what the user asked for. The
+export writes both back.
+
+## llmsTxt
+
+The text served at `/llms.txt` — what ChatGPT, Claude and Perplexity read to
+describe the business ([llmstxt.org](https://llmstxt.org)). Markdown, at most
+20,000 characters; the owner can edit it later in the dashboard (Optimalkan
+llms.txt).
+
+- **Leave it out on `create_site`** and the platform writes one in the
+  background from the site's pages, `aiDescription` and products, as it does
+  for a site made with the wizard. It is stored within about a minute; the
+  result says `"llmsTxt": "generating"`.
+- **Write it yourself** when the interview gave you facts worth stating
+  plainly. Only facts the user gave you — no invented prices, hours or
+  awards. A good one is short:
+
+  ```markdown
+  # Warung Senja
+
+  > Warung makan masakan rumahan Jawa di Jl. Kaliurang Km 5, Yogyakarta, buka setiap hari.
+
+  ## Halaman
+  - [Beranda](https://warung-senja.wpage.id/): menu andalan dan cara pesan
+  - [Menu](https://warung-senja.wpage.id/menu): daftar menu dengan harga
+  - [Kontak](https://warung-senja.wpage.id/kontak): alamat, peta, WhatsApp
+
+  ## Fakta
+  - Jam buka: Senin–Minggu 10.00–21.00
+  - Harga: nasi + lauk mulai Rp15.000
+  - WhatsApp: +62 812-3456-7890
+  ```
+
+  The name as the `#` heading, one sentence on what the business does and
+  where, the important pages as full links (the site's address, or its
+  custom domain), then the facts a customer asks for: hours, prices, contact,
+  area served.
+- **On `update_site`:** leaving `llmsTxt` out keeps the stored one; a string
+  replaces it; `null` removes it (`/llms.txt` then falls back to an automatic
+  outline of the pages). A site that has none stored and an update that does
+  not mention the key gets the platform's one after the update, like a new
+  site. The export writes the stored text, and the dry run says "llms.txt
+  dipasang / diganti / dihapus".
+- Checked by `variant-check site` (≥ 0.1.67) and the server. Not part of
+  `baseRevision`: the background writer must not make the revision you were
+  just given stale.
 
 ## theme
 

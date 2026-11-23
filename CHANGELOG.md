@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.19 — 2026-11-23
+
+- **`llmsTxt`: the site's own `/llms.txt` in `site.json`** (`site-json.md`, `mcp.md`, `variant-check` ≥ 0.1.67). Markdown, up to 20,000 characters, starting with `# ` and the business name. `create_site` stores it; on `update_site` / `add_page` leaving it out keeps the stored text, `null` clears it, and the dry run says "llms.txt dipasang / diganti / dihapus". A site created without it gets the platform's generated llms.txt in the background, as the wizard does. `export_site_bundle` writes it back. It is not part of the revision.
+
 ## 0.2.18 — 2026-11-20
 
 - **Listing screenshots through the token** (`mcp.md`). `begin_listing_screenshot_upload` gives the upload URL and the limits (6 per listing, 2 MB each, JPG/PNG/WebP); POST each image with the token, then pass the returned keys as `screenshots` to `create_template_listing` / `update_template_listing`. The dry run lists what is added and removed; `null` clears. Only images uploaded by the same account are accepted; a URL is refused.

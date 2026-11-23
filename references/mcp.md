@@ -45,7 +45,7 @@ and create a new one.
 | `get_plan_limits` | Baca | Free/Pro limits, the account's room for a new site, `variants` (`maxPerSite` 24, `maxPerUpload` 24); with `siteId`, that site's plan, pages used/left and `variantsUsed`/`variantsLeft` |
 | `check_subdomain` | Baca | Is `<name>.wpage.id` free? normalised name, why not, up to 3 free alternatives |
 | `export_site_bundle` | Baca | The site as a folder: `site.json` with ids and `variants[]`, `files` (`sections/<key>.astro` of the site's own variants, plus samples), `notCarried`, and `lock` |
-| `create_site` | Tulis | A new DRAFT website from `manifest` (+ `variants` with each `source`, max 24, `subdomain`, `assets`) |
+| `create_site` | Tulis | A new DRAFT website from `manifest` (+ `variants` with each `source`, max 24, `subdomain`, `assets`); without `manifest.llmsTxt` the platform writes the site's llms.txt in the background (`llmsTxt: "generating"`) |
 | `update_site` | Tulis | Change a site by diff (needs `baseRevision`); `variants` = only the files you changed or added |
 | `add_page` | Tulis | Add one page (needs `baseRevision`) |
 | `begin_asset_upload` | Tulis | An upload session for the user's own images |
@@ -150,6 +150,14 @@ send. It changes whenever the site changes — in the dashboard too — so a
 stale one is refused (`revisionConflict: true`): export again, re-apply your
 change to the fresh `site.json`, and retry. Never "force" around it; the
 refusal is what stops you from overwriting the user's own edits.
+
+`llms.txt` is the one site field outside the revision: the platform may
+write it in the background a few seconds after `create_site` (or after an
+`update_site` on a site that had none), and that must not stale the revision
+you were just given. Every write result says where it comes from in
+`llmsTxt`: `"bundle"` (your text), `"generating"` (the platform's, stored
+within about a minute), `"cleared"`, `"unchanged"` or `"none"`. To change it,
+send `llmsTxt` (see `site-json.md`); leaving the key out never touches it.
 
 Beside the lock, a confirmed write returns `changed`: the variants it moved,
 by key — `{ "hero-warung": { "from": 2, "to": 3 } }`. `from: null` means the
